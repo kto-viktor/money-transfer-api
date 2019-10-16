@@ -1,5 +1,6 @@
 package ru.victorpomidor.moneytransfer.model
 
+import com.fasterxml.jackson.annotation.JsonValue
 import java.math.BigDecimal
 import java.util.UUID
 
@@ -9,7 +10,6 @@ data class Transfer(
     val sourceAccountId: UUID,
     val targetAccountId: UUID,
     val amount: BigDecimal,
-    val currency: String,
     var status: TransferStatus? = null
 ) {
     fun requestKey() = RequestKey(requestId, systemId)
@@ -20,7 +20,7 @@ data class TransferStatus(
     val errorMessage: String = ""
 )
 
-enum class TransferStatusCode(private val code: Int) {
+enum class TransferStatusCode(@get:JsonValue val code: Int) {
     SUCCESS(0),
     IN_PROGRESS(1),
     INSUFFICIENT_FUNDS(2),

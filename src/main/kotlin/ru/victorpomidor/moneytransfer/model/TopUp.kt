@@ -1,5 +1,6 @@
 package ru.victorpomidor.moneytransfer.model
 
+import com.fasterxml.jackson.annotation.JsonValue
 import java.math.BigDecimal
 
 data class TopUp(
@@ -11,7 +12,7 @@ data class TopUp(
     fun requestKey() = RequestKey(requestId, systemId)
 }
 
-enum class TopUpStatus(val code: Int) {
+enum class TopUpStatus(@get:JsonValue val code: Int) {
     SUCCESS(0),
     IN_PROGRESS(1),
     ACCOUNT_NOT_FOUND(2)

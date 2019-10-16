@@ -7,16 +7,14 @@ import org.glassfish.jersey.server.ResourceConfig
 import java.util.logging.Level
 import java.util.logging.Logger
 
-class ApiResourceConfig : ResourceConfig() {
+class ApiResourceConfig(diConfig: DiConfig) : ResourceConfig() {
     companion object {
         const val MAX_ENTITY_SIZE = 10000
     }
 
     init {
-        val diContainer = DiConfig()
-
-        register(diContainer.accountResource)
-        register(diContainer.transferResource)
+        register(diConfig.accountResource)
+        register(diConfig.transferResource)
 
         register(
             LoggingFeature(Logger.getLogger(DEFAULT_LOGGER_NAME), Level.INFO, PAYLOAD_ANY, MAX_ENTITY_SIZE)

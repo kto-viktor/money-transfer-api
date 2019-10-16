@@ -13,6 +13,7 @@ import org.glassfish.jersey.test.spi.TestContainerException
 import org.glassfish.jersey.test.spi.TestContainerFactory
 import readBody
 import ru.victorpomidor.moneytransfer.config.ApiResourceConfig
+import ru.victorpomidor.moneytransfer.config.DiConfig
 import ru.victorpomidor.moneytransfer.model.Account
 import ru.victorpomidor.moneytransfer.model.TopUp
 import java.util.UUID
@@ -21,7 +22,7 @@ import javax.ws.rs.core.Response
 
 open class ApiIntegrationTest : JerseyTest() {
     override fun configure(): Application {
-        return ApiResourceConfig()
+        return ApiResourceConfig(DiConfig())
     }
 
     override fun configureClient(clientConfig: ClientConfig) {

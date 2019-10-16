@@ -191,16 +191,14 @@ class TransferIntegrationTest : ApiIntegrationTest() {
         sourceAccount: Account,
         targetAccount: Account,
         id: String = UUID.randomUUID().toString(),
-        amount: BigDecimal = BigDecimal(6),
-        currency: String = "USD"
+        amount: BigDecimal = BigDecimal(6)
     ): Transfer {
         return Transfer(
             requestId = id,
             systemId = "system_id",
             sourceAccountId = sourceAccount.id,
             targetAccountId = targetAccount.id,
-            amount = amount,
-            currency = currency
+            amount = amount
         )
     }
 
