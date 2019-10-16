@@ -13,21 +13,6 @@ data class Transfer(
     var status: TransferStatus? = null
 ) {
     fun requestKey() = RequestKey(requestId, systemId)
-
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (javaClass != other?.javaClass) return false
-
-        other as Transfer
-
-        if (requestId != other.requestId) return false
-
-        return true
-    }
-
-    override fun hashCode(): Int {
-        return requestId.hashCode()
-    }
 }
 
 data class TransferStatus(
