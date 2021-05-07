@@ -39,7 +39,8 @@ open class ApiIntegrationTest : JerseyTest() {
         val account = Account(
             id,
             "my account",
-            currency = currency
+            currency = currency,
+            token = "123"
         )
         val response = target("/accounts/")
             .request()

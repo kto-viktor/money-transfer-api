@@ -19,7 +19,8 @@ import ru.victorpomidor.moneytransfer.repository.KeyValueRepository
 
 class TransferServiceImpl(
     private val accountService: AccountService,
-    private val repository: KeyValueRepository<RequestKey, Transfer>
+    private val repository: KeyValueRepository<RequestKey, Transfer>,
+    private val callbackService: CallbackService
 ) : TransferService {
 
     override fun executeTransfer(transfer: Transfer): Transfer {
@@ -45,6 +46,8 @@ class TransferServiceImpl(
                 transferWithStatus(transfer, INSUFFICIENT_FUNDS)
             else -> {
                 accountService.addBalance(targetAccount.id, transfer.amount)
+                callbackService.sendCallback(sourceAccount.copy(balance = sourceAccount.balance.subtract(transfer.amount)))
+                callbackService.sendCallback(targetAccount.copy(balance = targetAccount.balance.add(transfer.amount)))
                 transferWithStatus(transfer, SUCCESS)
             }
         }

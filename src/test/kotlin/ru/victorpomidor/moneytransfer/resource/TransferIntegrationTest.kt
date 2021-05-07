@@ -63,7 +63,7 @@ class TransferIntegrationTest : ApiIntegrationTest() {
 
     @Test
     fun shouldReturnSourceAccountNotFound() {
-        val sourceAccount = Account(UUID.randomUUID(), "name", currency = "USD")
+        val sourceAccount = Account(UUID.randomUUID(), "name", currency = "USD", token = "123")
         val targetAccount = createAccount()
         val transfer = getTransfer(sourceAccount, targetAccount)
 
@@ -75,7 +75,7 @@ class TransferIntegrationTest : ApiIntegrationTest() {
     @Test
     fun shouldReturnTargetAccountNotFound() {
         val sourceAccount = createAccount()
-        val targetAccount = Account(UUID.randomUUID(), "name", currency = "USD")
+        val targetAccount = Account(UUID.randomUUID(), "name", currency = "USD", token = "123")
         val transfer = getTransfer(sourceAccount, targetAccount)
 
         val response = callTransfer(transfer)

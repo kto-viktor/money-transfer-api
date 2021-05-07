@@ -25,7 +25,8 @@ class AccountIntegrationTest : ApiIntegrationTest() {
         val account = Account(
             id,
             "my account",
-            currency = "USD"
+            currency = "USD",
+            token = "123"
         )
 
         val response = target("/accounts/")
@@ -43,7 +44,8 @@ class AccountIntegrationTest : ApiIntegrationTest() {
             id,
             "my account",
             BigDecimal.TEN,
-            "USD"
+            "USD",
+            token = "123"
         )
 
         val response = target("/accounts/")
@@ -60,7 +62,8 @@ class AccountIntegrationTest : ApiIntegrationTest() {
         val account = Account(
             id,
             "my account",
-            currency = "USD"
+            currency = "USD",
+            token = "123"
         )
         target("/accounts/")
             .request()
@@ -80,7 +83,8 @@ class AccountIntegrationTest : ApiIntegrationTest() {
         val account = Account(
             id,
             "my account",
-            currency = "USD"
+            currency = "USD",
+            token = "123"
         )
         target("/accounts/")
             .request()
@@ -99,7 +103,8 @@ class AccountIntegrationTest : ApiIntegrationTest() {
         val account = Account(
             id,
             "my account",
-            currency = "USD"
+            currency = "USD",
+            token = "123"
         )
         target("/accounts/")
             .request()

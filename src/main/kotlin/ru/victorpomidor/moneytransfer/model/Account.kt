@@ -7,5 +7,6 @@ data class Account(
     val id: UUID,
     val name: String,
     val balance: BigDecimal = BigDecimal.ZERO,
-    val currency: String
+    val currency: String,
+    val token: String
 )
